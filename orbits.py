@@ -21,7 +21,18 @@ def get_orbit_type(e: float) -> str:
     :param e: Eccentricity
     :return: Type of orbit (elliptical, parabolic, hyperbolic, circular, rectilinear).
     """
-    pass
+    if e == 0:
+        return "circular"
+    elif 0 < e < 1:
+        return "elliptical"
+    elif e == 1:
+        return "parabolic"
+    elif 1 < e < float('inf'):
+        return "hyperbolic"
+    elif e == float('inf'):
+        return "rectilinear"
+    elif e <= 0:
+        raise Exception("Incorrect value")
 
 
 def get_trajectory(p: float, e: float) -> np.array:
