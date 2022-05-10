@@ -39,6 +39,7 @@ def get_orbit_type(e: float) -> str:
     :param e: Eccentricity
     :return: Type of orbit (elliptical, parabolic, hyperbolic, circular, rectilinear).
     """
+    """ Realized by Denis Arkhipov """
     if e == 0:
         return "circular"
     elif 0 < e < 1:
