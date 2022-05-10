@@ -54,12 +54,27 @@ def get_orbit_type(e: float) -> str:
         raise Exception("Incorrect value")
 
 
-def get_trajectory(p: float, e: float) -> np.array:
+def get_trajectory(p: float, e: float, start: float = 0, end: float = 2 * pi, step: float = 0.005):
     """
     Get trajectory of the conic section.
-
+    
     :param p: "p" parameter in polar form of conic section.
-    :param e: Eccentricity
+    :param e: Eccentricity.
+    :param start: first value of a range of phi (angles) values.
+    :param end: last value of a range of phi (angles) values.
     :return: Array of (x, y) points of trajectory.
     """
-    pass
+    x = []
+    y = []
+
+    # array of angles in radian
+    phi_arr = np.arange(start, end, step)
+
+    for phi in phi_arr:
+
+        r = p / (1 + e * math.cos(phi))
+
+        x.append(r * math.cos(phi))
+        y.append(r * math.sin(phi))
+    
+    return x, y
