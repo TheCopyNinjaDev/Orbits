@@ -1,3 +1,10 @@
+import matplotlib
+
+matplotlib.use('TkAgg')
+import numpy as np
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
+from matplotlib.figure import Figure
+
 from tkinter import *
 
 
@@ -11,6 +18,10 @@ class Application:
     def rerender(self):
         self.window.mainloop()
 
-    def add_button(self):
-        btn = Button(self.window, text="Не нажимать!")
+    def add_button(self, text, onclick_f):
+        btn = Button(self.window, text=text, command=onclick_f)
         btn.grid(column=1, row=0)
+
+    def add_input(self):
+        self.txt1 = Entry(self.window, width=10)
+        self.txt1.grid(column=1, row=0)
