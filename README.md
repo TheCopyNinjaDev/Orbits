@@ -1,7 +1,9 @@
 # Orbits
 
 Documentation.
+
 _**GET_ORBIT_PARAMETERS**_
+
 In the get_orbit_parameters function, we define the Eccentricity* and Focus parameter p.
 
 This function gets the following parameters of orbit:
