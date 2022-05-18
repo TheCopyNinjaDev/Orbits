@@ -1,5 +1,5 @@
 import numpy as np
-
+import math
 from typing import Tuple
 
 
@@ -54,7 +54,7 @@ def get_orbit_type(e: float) -> str:
         raise Exception("Incorrect value")
 
 
-def get_trajectory(p: float, e: float, start: float = 0, end: float = 2 * pi, step: float = 0.005):
+def get_trajectory(p: float, e: float, start: float = 0, end: float = 2 * math.pi, step: float = 0.005):
     """
     Get trajectory of the conic section.
     
