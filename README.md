@@ -13,15 +13,21 @@ This function gets the following parameters of orbit:
      :return: Eccentricity and "p" parameter.
 
 To begin with, we introduce additional variables G = universal gravitational constant 6.667E-11 and Mass of the earth is , ME = 5.97e24
+
 We calculate the gravitational parameter μ** = G*ME
+
 We find the cross product of the vectors v and r and its length in order to calculate the focal parameter p.
+
 Next, we find the length of the vector r and find the Eccentricity
 
 _**GET_ORBIT_TYPE**_
+
 The following get_orbit_type function is required to get the orbit type.
+
 The function takes :param e: Eccentricity* and returns the orbit type (elliptical, parabolic, hyperbolic, circular, rectilinear)
 
 _**GET_TRAJECTORY**_
+
 The get_trajectory function gets the trajectory of the conic section.
 
      :param p: "p" parameter in polar form of conic section.
