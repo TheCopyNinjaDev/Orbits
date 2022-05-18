@@ -3,41 +3,55 @@ import numpy as np
 from typing import Tuple
 
 
-def get_orbit_parameters(v: np.array, r: np.array) -> Tuple[float, float]:
-    """
-    Get parameters of orbit.
-
-    :param v: Rocket speed vector at a distance "r" from the Earth.
-    :param r: Rocket radius vector.
-    :return: Eccentricity and "p" parameter.
-    """
-    """ Realized by Alexei Zolotarev """
+def get_orbit_parameters(v_vector: np.array, r_vector: np.array) -> Tuple[float, float]:
     # Enter additional variables
-    g = 6.667e-11
-    me = 5.97e24
+    G = 6.667e-11
+    ME = 5.97e24
+    # mu coefficient
+    MU = G * ME
 
-    # gravitational parameter mu
-    mu = g * me
+    try:
+        # Vector H
+        h_vector = np.int64(np.cross(v_vector, r_vector))
 
-    # Vector H
-    h_vector = np.cross(v, r)
+        # Square the elements of vector H
+        h_vector_square = np.array([i ** 2 for i in h_vector], dtype=np.int64)
+        # Find the sum of the elements of the vector H
+        h_vector_sum = np.sum(h_vector_square, dtype=np.int64)
+        # Vector length H
+        h = math.sqrt(h_vector_sum)
+        # Focal parameter
+        p = np.int64(h**2) / MU
 
-    # Vector length H
-    h = np.sum([i**2 for i in h_vector])**(1/2)
+        # Square the elements of the vector R
+        r_vector_square = np.array([i ** 2 for i in r_vector], dtype=np.int64)
+        # Find the sum of the elements of the vector H
+        r_vector_sum = np.sum(r_vector_square, dtype=np.int64)
+        # Vector length R
+        r = math.sqrt(r_vector_sum)
 
-    # Focal parameter
-    p = h**2 / mu
+        # Find the vector product of vectors H and R
+        vector_h_v = np.int64(np.cross(v_vector, h_vector))
 
-    # Vector length R
-    r = np.sum([i**2 for i in r])**(1/2)
+        # Vector eccentricity
+        e_vector = vector_h_v / MU - r_vector / r
+        # Square the elements of the vector R
+        e_vector_square = np.array([i ** 2 for i in e_vector], dtype=np.float64)
+        # Find the sum of the elements of the vector H
+        e_vector_sum = np.sum(e_vector_square, dtype=np.float64)
+        # Vector length R
+        e = math.sqrt(e_vector_sum)
 
-    # Vector eccentricity
-    e_vector = np.cross(v, h_vector) / mu - r / r
-
-    # Vector length eccentricity
-    e = np.sum([i**2 for i in e_vector])**(1/2)
-
-    return e, p
+        if np.isnan(e) or np.isnan(p):
+            raise Exception
+        else:
+            return e,p
+    except Exception:
+        return "Incorrect Data"
+    except ArithmeticError:
+        return "Arithmetic error"
+    except TypeError:
+        return "An operation or function is applied to an invalid type value"
 
 
 def get_orbit_type(e: float) -> str:
