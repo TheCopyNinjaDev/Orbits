@@ -28,6 +28,17 @@ The following get_orbit_type function is required to get the orbit type.
 
 The function takes :param e: Eccentricity* and returns the orbit type (elliptical, parabolic, hyperbolic, circular, rectilinear)
 
+-If e = 0 - circle
+
+-If 0 < e < 1 - ellipse
+
+-If e = 1 - parabola
+
+-If e > 1 - hyperbola is greater than 1.
+
+-If e = infty - a pair of lines
+
+-If e < 0 - Exception("Incorrect value")
 
 
 _**GET_TRAJECTORY**_
@@ -37,6 +48,16 @@ The get_trajectory function gets the trajectory of the conic section.
      :param p: "p" parameter in polar form of conic section.
      :param e: Eccentricity
      :return: Array of (x, y) points of trajectory.
+     
+The angle phi is moved in the interval from start to end with a step step, and is substituted into the following formulas: 
+
+x = r * cos(phi), 
+
+y = r * sin(phi), 
+
+r = p / (1 + e * np.cos(phi))
+
+The function returns two lists: x, y - coordinates, points of trajectory
 
 _**USER INTERFACE**_
 
