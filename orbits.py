@@ -1,9 +1,10 @@
 import numpy as np
 
-from typing import Tuple
+import math
+from math import pi
 
 
-def get_orbit_parameters(v_vector: np.array, r_vector: np.array) -> Tuple[float, float]:
+def get_orbit_parameters(v_vector: np.array, r_vector: np.array) -> tuple[float, float]:
     # Enter additional variables
     G = 6.667e-11
     ME = 5.97e24
@@ -45,13 +46,13 @@ def get_orbit_parameters(v_vector: np.array, r_vector: np.array) -> Tuple[float,
         if np.isnan(e) or np.isnan(p):
             raise Exception
         else:
-            return e,p
-    except Exception:
-        return "Incorrect Data"
+            return e, p
     except ArithmeticError:
-        return "Arithmetic error"
+        raise ArithmeticError("Arithmetic error")
     except TypeError:
-        return "An operation or function is applied to an invalid type value"
+        raise TypeError("An operation or function is applied to an invalid type value")
+    except Exception:
+        raise Exception("Incorrect Data")
 
 
 def get_orbit_type(e: float) -> str:
@@ -80,6 +81,7 @@ def get_trajectory(p: float, e: float, start: float = 0, end: float = 2 * pi, st
     """
     Get trajectory of the conic section.
     
+    :param step:
     :param p: "p" parameter in polar form of conic section.
     :param e: Eccentricity.
     :param start: first value of a range of phi (angles) values.
