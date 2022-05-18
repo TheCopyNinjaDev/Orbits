@@ -15,20 +15,28 @@ def get_orbit_parameters(v: np.array, r: np.array) -> Tuple[float, float]:
     # Enter additional variables
     g = 6.667e-11
     me = 5.97e24
+
     # gravitational parameter mu
     mu = g * me
+
     # Vector H
     h_vector = np.cross(v, r)
+
     # Vector length H
     h = np.sum([i**2 for i in h_vector])**(1/2)
+
     # Focal parameter
     p = h**2 / mu
+
     # Vector length R
     r = np.sum([i**2 for i in r])**(1/2)
+
     # Vector eccentricity
     e_vector = np.cross(v, h_vector) / mu - r / r
+
     # Vector length eccentricity
     e = np.sum([i**2 for i in e_vector])**(1/2)
+
     return e, p
 
 
