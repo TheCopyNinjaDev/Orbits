@@ -20,11 +20,15 @@ We find the cross product of the vectors v and r and its length in order to calc
 
 Next, we find the length of the vector r and find the Eccentricity
 
+
+
 _**GET_ORBIT_TYPE**_
 
 The following get_orbit_type function is required to get the orbit type.
 
 The function takes :param e: Eccentricity* and returns the orbit type (elliptical, parabolic, hyperbolic, circular, rectilinear)
+
+
 
 _**GET_TRAJECTORY**_
 
