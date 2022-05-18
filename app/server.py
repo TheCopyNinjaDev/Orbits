@@ -1,11 +1,6 @@
-from flask import Flask
-
-app = Flask(__name__)
+from main import app
 
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def hello_world():
     return "<p>Hello, World!</p>"
-
-
-app.run(debug=True)
