@@ -54,9 +54,13 @@ More formally two conic sections are similar if and only if they have the same e
 One can think of the eccentricity as a measure of how much a conic section deviates from being circular. In particular:
 
 -The eccentricity of a circle is zero.
+
 -The eccentricity of an ellipse which is not a circle is greater than zero but less than 1.
+
 -The eccentricity of a parabola is 1.
+
 -The eccentricity of a hyperbola is greater than 1.
+
 -The eccentricity of a pair of lines is infty
 
 
