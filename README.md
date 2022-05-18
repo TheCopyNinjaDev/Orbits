@@ -38,13 +38,16 @@ The get_trajectory function gets the trajectory of the conic section.
      :param e: Eccentricity
      :return: Array of (x, y) points of trajectory.
 
-USER INTERFACE
+_**USER INTERFACE**_
 
 The program interface looks like this:
 Created 2 fields for entering speed vector and radius vector, and 2 buttons: launch rocket and clear.
 In order to launch a rocket, you need to enter the values of the vectors in the fields.
 In order to launch a new rocket you must first press the clear button.
-----------------------------------------------------------------------------------------------------------------------------------
+
+
+**_FOOTNOTE_**
+
 *In mathematics, the eccentricity of a conic section is a non-negative real number that uniquely characterizes its shape.
 More formally two conic sections are similar if and only if they have the same eccentricity.
 
