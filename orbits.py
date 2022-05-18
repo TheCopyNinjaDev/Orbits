@@ -15,7 +15,7 @@ def get_orbit_parameters(v_vector: np.array, r_vector: np.array) -> Tuple[float,
     # Enter additional variables
     G = 6.667e-11
     ME = 5.97e24
-    # mu coefficient
+    # gravitational parameter mu
     MU = G * ME
     # Vector H
     h_vector = np.cross(v_vector, r_vector)
