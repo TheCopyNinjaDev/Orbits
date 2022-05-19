@@ -10,6 +10,10 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationTool
 
 class Application:
     def __init__(self, main_title):
+        """
+        Initialization application
+        :param main_title: title of apllication
+        """
         self.window = tk.Tk()
         self.window.title(main_title)
         self.window.geometry('1280x720')
@@ -35,7 +39,9 @@ class Application:
         self.add_button('rerender', self.print_graphics)
 
     def print_graphics(self):
-
+        """
+            Drawing graphics
+        """
         vector_v = self.get_vector(self.txt1.get())
         vector_r = self.get_vector(self.txt2.get())
         figure = Figure(figsize=(6, 4), dpi=100)
@@ -58,6 +64,9 @@ class Application:
 
     @staticmethod
     def get_vector(sting_vector):
+        """
+        Get vector from string
+        """
         return np.array([int(s) for s in sting_vector.split() if s.isdigit()])
 
     def rerender(self):
